@@ -68,7 +68,7 @@ export default function OrderItemsSection({
               {items.map((item: TProduct | TReceipt) => (
                 <div
                   key={item.id}
-                  className="self-stretch border-b border-primary-200 inline-flex justify-between items-center sm:py-5 sm:pr-5"
+                  className="self-stretch border-b border-primary-200 inline-flex justify-between items-center pb-[8px] sm:pb-0 sm:pr-5"
                 >
                   <div className="flex gap-5 flex-1 sm:flex sm:justify-start sm:items-center sm:gap-5">
                     <div className="w-[72px] sm:w-[140px] h-[72px] sm:h-[140px] bg-primary-50 rounded-xs sm:bg-white flex justify-center items-center flex-shrink-0">
@@ -83,7 +83,7 @@ export default function OrderItemsSection({
                         </div>
                       )}
                     </div>
-                    <div className="flex-1 inline-flex flex-col items-start gap-3 sm:justify-start sm:inline-flex sm:flex-col sm:justify-start sm:items-start sm:gap-7">
+                    <div className="flex-1 inline-flex flex-col items-start gap-2 sm:justify-start sm:inline-flex sm:flex-col sm:justify-start sm:items-start sm:gap-3">
                       <div className="flex flex-col justify-center items-start gap-1 sm:justify-start sm:gap-2.5">
                         <div className="text-center justify-center text-primary-950 text-sm sm:text-base font-medium">
                           {item.productName}

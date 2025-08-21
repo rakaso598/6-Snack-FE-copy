@@ -50,26 +50,26 @@ export default function ApprovalInfoSection({
           </div>
         </div>
       </div>
-      <div className="self-stretch flex flex-col justify-center items-start sm:flex sm:flex-row sm:justify-start sm:items-stretch">
+      <div className="self-stretch flex flex-col justify-center items-center sm:flex sm:flex-row sm:justify-start sm:items-stretch">
         <div className="self-stretch inline-flex justify-start items-center sm:flex-1">
-          <div className="w-36 self-stretch px-2 py-4 border-r border-b border-primary-200 flex justify-start items-start gap-2">
+          <div className="w-36 h-12 px-2 py-2 border-r border-b border-primary-200 flex justify-start items-center gap-2">
             <div className="text-center justify-center text-primary-950 text-sm sm:text-base font-normal ">
               상태
             </div>
           </div>
-          <div className="flex-1 self-stretch p-4 border-b border-primary-200 flex justify-start items-start gap-2 sm:border-r">
+          <div className="flex-1 h-12 px-4 py-2 border-b border-primary-200 flex justify-start items-center gap-2 sm:border-r">
             <div className="text-center justify-center text-primary-900 text-sm sm:text-base font-bold ">
               {getStatusText(status)}
             </div>
           </div>
         </div>
-        <div className="self-stretch inline-flex justify-start items-start sm:flex-1">
-          <div className="w-36 self-stretch px-2 py-4 border-r border-b border-primary-200 flex justify-start items-start gap-2">
+        <div className="self-stretch inline-flex justify-start items-center sm:flex-1">
+          <div className="w-36 h-12 px-2 py-2 border-r border-b border-primary-200 flex justify-start items-center gap-2">
             <div className="text-center justify-center text-primary-950 text-sm sm:text-base font-normal ">
               결과 메시지
             </div>
           </div>
-          <div className="flex-1 self-stretch p-4 border-b border-primary-200 flex justify-start items-start gap-2">
+          <div className="flex-1 h-12 px-4 py-2 border-b border-primary-200 flex justify-start items-center gap-2">
             <div className="flex-1 justify-center text-primary-900 text-sm sm:text-base font-bold  leading-snug">
               {adminMessage || "-"}
             </div>

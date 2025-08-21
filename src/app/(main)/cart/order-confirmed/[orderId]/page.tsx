@@ -18,7 +18,7 @@ const ProductItem = React.memo(({ receipt }: { receipt: { price: number; quantit
   
   return (
     <div
-      className="self-stretch border-b border-primary-200 inline-flex justify-between items-center sm:py-5 sm:pr-5"
+      className="self-stretch border-b border-primary-200 inline-flex justify-between items-center pb-[8px] sm:py-5 sm:pr-5"
     >
       <div className="flex gap-5 flex-1 sm:flex sm:justify-start sm:items-center sm:gap-5">
         <div className="relative w-[72px] sm:w-[140px] h-[72px] sm:h-[140px] bg-primary-50 rounded-xs sm:bg-white flex justify-center items-center flex-shrink-0">
@@ -31,7 +31,7 @@ const ProductItem = React.memo(({ receipt }: { receipt: { price: number; quantit
             />
           </div>
         </div>
-        <div className="flex-1 inline-flex flex-col items-start gap-3 sm:justify-start sm:inline-flex sm:flex-col sm:justify-start sm:items-start sm:gap-7">
+        <div className="flex-1 inline-flex flex-col items-start gap-2 sm:justify-start sm:inline-flex sm:flex-col sm:justify-start sm:items-start sm:gap-7">
           <div className="flex flex-col justify-center items-start gap-1 sm:justify-start sm:gap-2.5">
             <div className="text-center justify-center text-primary-950 text-sm sm:text-base font-medium">
               {receipt.productName}
@@ -116,7 +116,7 @@ export default function OrderConfirmedPage() {
 
   // 버튼 텍스트 메모이제이션
   const buttonText = useMemo(() => {
-    return user?.role === "USER" ? "요청 내역 확인" : "구매 내역 확인";
+    return user?.role === "USER" ? "요청내역 확인" : "요청내역 확인";
   }, [user?.role]);
 
   // 진행 단계 컴포넌트 메모이제이션
@@ -273,12 +273,13 @@ export default function OrderConfirmedPage() {
 
           {/* 하단 버튼 */}
           <div className="self-stretch h-16 inline-flex justify-start md:justify-center items-center gap-5">
-            <Button
-              type="white"
-              label="장바구니로 돌아가기"
-              className="flex-1 md:flex-none md:w-[260px] h-16 px-4 py-3 bg-white rounded-[2px] outline-1 outline-offset-[-1px] outline-zinc-400 flex justify-center items-center text-base font-semibold"
+            <div
+              className="flex-1 md:flex-none md:w-[260px] h-16 px-4 py-3 bg-white rounded-[2px] outline-1 outline-offset-[-1px] outline-zinc-400 flex justify-center items-center text-base font-semibold cursor-pointer border border-zinc-400"
               onClick={handleBackToCart}
-            />
+            >
+              <span className="block sm:hidden text-center">장바구니</span>
+              <span className="hidden sm:block">장바구니로 돌아가기</span>
+            </div>
             <Button
               type="black"
               label={buttonText}
