@@ -36,7 +36,7 @@ export default function MobileCategoryMenu({
     <div className="sm:hidden">
       <div className="absolute top-[372px] left-0 right-0 bottom-0 bg-black/20" onClick={onClose} />
       <div
-        className={`absolute top-14 left-1/2 transform -translate-x-1/2 w-full sm:hidden bg-white/90 backdrop-blur-lg flex flex-col items-center gap-2.5 p-4 ${className}`}
+        className={`fixed top-14 left-1/2 transform -translate-x-1/2 w-full sm:hidden bg-white/90 backdrop-blur-lg flex flex-col items-center gap-2.5 p-4 ${className}`}
       >
         {items.map((item) => {
           const isActive = isCurrentCategory(item);
