@@ -139,8 +139,8 @@ export default function ProductRegistrationForm({
             className="w-full sm:w-[216px] h-[64px]"
           />
           <Button
-            type="black"
-            label="등록하기"
+            type={createProductMutation.isPending || !formState.isValid ? "grayDisabled" : "black"}
+            label={createProductMutation.isPending ? "등록중..." : "등록하기"}
             onClick={onSubmit}
             disabled={createProductMutation.isPending || !formState.isValid}
             className="w-full sm:w-[216px] h-[64px]"
