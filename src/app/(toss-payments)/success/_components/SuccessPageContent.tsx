@@ -48,7 +48,7 @@ export default function SuccessPageContent({ orderId, amount, paymentKey }: TSuc
 
       const response = await fetch(
         process.env.NODE_ENV === "production"
-          ? "https://api.5nack.site/payments/confirm"
+          ? "https://api.snackk.store/payments/confirm"
           : "http://localhost:8080/payments/confirm",
         {
           method: "POST",
