@@ -7,7 +7,7 @@ export function usePreventLeave(orderId: string) {
   async function cancel(orderId: string) {
     const response = await fetch(
       process.env.NODE_ENV === "production"
-        ? "https://api.5nack.site/payments/cancel"
+        ? "https://api.snackk.store/payments/cancel"
         : "http://localhost:8080/payments/cancel",
       {
         method: "PATCH",
