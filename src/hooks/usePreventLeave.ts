@@ -2,30 +2,15 @@
 
 import { useEffect } from "react";
 
+import { cookieFetch } from "@/lib/api/fetchClient.api";
+
 export function usePreventLeave(orderId: string) {
   // 취소 API 호출
   async function cancel(orderId: string) {
-    const response = await fetch(
-      process.env.NODE_ENV === "production"
-        ? "https://api.snackk.store/payments/cancel"
-        : "http://localhost:8080/payments/cancel",
-      {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ orderId }),
-        credentials: "include",
-        cache: "no-store",
-      },
-    );
-
-    if (!response.ok) {
-      const errorData = await response.json().catch(() => ({}));
-      throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
-    }
-
-    return await response.json();
+    return await cookieFetch(`/payments/cancel`, {
+      method: "PATCH",
+      body: JSON.stringify({ orderId }),
+    });
   }
 
   const confirmLeave = () => {
