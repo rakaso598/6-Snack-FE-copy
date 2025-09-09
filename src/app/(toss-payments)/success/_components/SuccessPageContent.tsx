@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { fetchOrderWithoutStatus } from "@/lib/api/orderManage.api";
+import { cookieFetch } from "@/lib/api/fetchClient.api";
 import CheckIconSvg from "@/components/svg/CheckIconSvg";
 
 type TSuccessPageContentProps = {
@@ -46,29 +47,15 @@ export default function SuccessPageContent({ orderId, amount, paymentKey }: TSuc
     async function confirm() {
       hasConfirmed.current = true; // ✅ 중복 방지
 
-      const response = await fetch(
-        process.env.NODE_ENV === "production"
-          ? "https://api.snackk.store/payments/confirm"
-          : "http://localhost:8080/payments/confirm",
-        {
+      try {
+        await cookieFetch("/payments/confirm", {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
           body: JSON.stringify(requestData),
-          credentials: "include",
-          cache: "no-store",
-        },
-      );
-
-      const json = await response.json();
-
-      if (!response.ok) {
-        router.replace(`/fail?message=${json.message}&code=${json.code}`);
-        return;
+        });
+        setSuccess(true);
+      } catch (error: any) {
+        router.replace(`/fail?message=${error.message}&code=500`);
       }
-
-      setSuccess(true);
     }
 
     confirm();
