@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -19,6 +19,11 @@ type ProductGridProps = {
 
 export default function ProductGrid({ products, currentCategoryId }: ProductGridProps) {
   const router = useRouter();
+  const [failedImages, setFailedImages] = useState<Set<number>>(new Set());
+
+  const handleImageError = (productId: number) => {
+    setFailedImages(prev => new Set(prev).add(productId));
+  };
 
   if (!products || products.length === 0) {
     return (
@@ -40,6 +45,7 @@ export default function ProductGrid({ products, currentCategoryId }: ProductGrid
         // 현재 선택된 카테고리가 있으면 그것을 사용, 없으면 상품의 카테고리 ID 사용
         const categoryId = currentCategoryId || product.categoryId;
         const productDetailUrl = `/products/${product.id}?category=${categoryId}`;
+        const hasImageError = failedImages.has(product.id);
 
         return (
           <Link
@@ -48,8 +54,23 @@ export default function ProductGrid({ products, currentCategoryId }: ProductGrid
             className="flex flex-col justify-start items-center gap-[14px] md:gap-[20px] hover:opacity-80 transition-opacity w-full"
           >
             <div className="relative w-full flex justify-center items-center aspect-square min-w-[154.5px] min-h-[154.5px] max-h-[366.67px] max-w-[366.67px] round-xs bg-primary-50 overflow-hidden">
-              <div className="relative w-[70%] h-[70%] md:w-[75%] md:h-[75%] min-w-[53.8px] min-h-[93.39px] ">
-                <Image src={product.imageUrl} alt={product.name} fill className="object-contain" />
+              <div className="relative w-[70%] h-[70%] md:w-[75%] md:h-[75%] min-w-[53.8px] min-h-[93.39px]">
+                {hasImageError ? (
+                  <div className="w-full h-full flex items-center justify-center bg-gray-100 rounded">
+                    <div className="text-center text-gray-500">
+                      <div className="text-2xl mb-2">📦</div>
+                      <div className="text-xs">이미지 없음</div>
+                    </div>
+                  </div>
+                ) : (
+                  <Image
+                    src={product.imageUrl}
+                    alt={product.name}
+                    fill
+                    className="object-contain"
+                    onError={() => handleImageError(product.id)}
+                  />
+                )}
               </div>
 
               {product.isFavorite && (
