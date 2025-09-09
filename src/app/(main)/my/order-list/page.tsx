@@ -79,7 +79,7 @@ export default function MyOrderListPage() {
     if (!isLoading && !isError && requests.length > 0 && paginated.length === 0 && currentPage > 1) {
       setCurrentPage((p) => p - 1);
     }
-  }, [requests.length, paginated.length, isLoading, isError]);
+  }, [requests.length, paginated.length, isLoading, isError, currentPage]);
 
   if (isLoading) {
     return (

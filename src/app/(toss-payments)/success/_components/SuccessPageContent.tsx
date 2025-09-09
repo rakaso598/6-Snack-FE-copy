@@ -53,8 +53,9 @@ export default function SuccessPageContent({ orderId, amount, paymentKey }: TSuc
           body: JSON.stringify(requestData),
         });
         setSuccess(true);
-      } catch (error: any) {
-        router.replace(`/fail?message=${error.message}&code=500`);
+      } catch (error: unknown) {
+        const errorMessage = error instanceof Error ? error.message : "결제 확인 중 오류가 발생했습니다";
+        router.replace(`/fail?message=${errorMessage}&code=500`);
       }
     }
 
