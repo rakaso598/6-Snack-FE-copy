@@ -15,6 +15,10 @@ const nextConfig: NextConfig = {
       { hostname: "team3-snack-s3.s3.ap-northeast-2.amazonaws.com" }, // 리전 추가
       { hostname: "d2e2ap87lbbw61.cloudfront.net" },
     ],
+    dangerouslyAllowSVG: true,
+    contentDispositionType: 'attachment',
+    // 이미지 로딩 실패 시 fallback 처리를 위한 설정
+    unoptimized: process.env.NODE_ENV === 'development', // 개발 환경에서는 최적화 비활성화
   },
 };
 

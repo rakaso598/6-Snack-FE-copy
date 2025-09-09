@@ -21,7 +21,9 @@ export default function ProductGrid({ products, currentCategoryId }: ProductGrid
   const router = useRouter();
   const [failedImages, setFailedImages] = useState<Set<number>>(new Set());
 
-  const handleImageError = (productId: number) => {
+  const handleImageError = (productId: number, imageUrl: string) => {
+    console.warn(`🖼️ 상품 이미지 로딩 실패 [ID: ${productId}]: ${imageUrl}`);
+    console.warn('🔧 CloudFront/S3 연결 문제로 이미지를 표시할 수 없습니다.');
     setFailedImages(prev => new Set(prev).add(productId));
   };
 
@@ -68,7 +70,7 @@ export default function ProductGrid({ products, currentCategoryId }: ProductGrid
                     alt={product.name}
                     fill
                     className="object-contain"
-                    onError={() => handleImageError(product.id)}
+                    onError={() => handleImageError(product.id, product.imageUrl)}
                   />
                 )}
               </div>
