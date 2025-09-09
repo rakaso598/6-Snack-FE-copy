@@ -3,6 +3,10 @@ import { refreshAccessToken } from "./auth.api";
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
+if (!API_BASE_URL) {
+  console.error("❌ NEXT_PUBLIC_API_URL 환경 변수가 설정되지 않았습니다!");
+}
+
 export const cookieFetch = async <T>(path: string, options: RequestInit = {}): Promise<T> => {
   const method = options.method || "GET";
   // 개발 완료후 삭제
