@@ -12,8 +12,8 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       { hostname: "example.com" },
-      { hostname: "team3-snack-s3.s3.amazonaws.com" },
-      { hostname: "d2beg4tvxabcw1.cloudfront.net" },
+      { hostname: "team3-snack-s3.s3.ap-northeast-2.amazonaws.com" }, // 리전 추가
+      { hostname: "d2e2ap87lbbw61.cloudfront.net" },
     ],
   },
 };
