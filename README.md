@@ -20,7 +20,7 @@
 ### 📗 팀 문서 
 > [Snack Notion 바로가기](https://www.notion.so/3-Snack-2156e9d243fd81cd90e7e05503fe930b)  
 
-### 🔧 백엔드 Git 저장소  
+### 🔧 백엔드 저장소  
 > [Snack BE Repo 바로가기](https://github.com/rakaso598/6-Snack-BE-copy)
 
 ### 🧾 API 명세서
@@ -63,7 +63,7 @@
 
 -----------------
 
-## 🖼️ Snack(스낵) 미리보기
+## 🖼️ Snack 미리보기
 <table align="center">
   <thead>
     <tr>
