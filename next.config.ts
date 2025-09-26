@@ -10,10 +10,23 @@ const nextConfig: NextConfig = {
   //   ignoreBuildErrors: true, // TypeScript 오류도 무시하려면
   // },
   images: {
+    domains: ["d2e2ap87lbbw61.cloudfront.net"],
     remotePatterns: [
-      { hostname: "example.com" },
-      { hostname: "team3-snack-s3.s3.ap-northeast-2.amazonaws.com" }, // 리전 추가
-      { hostname: "d2e2ap87lbbw61.cloudfront.net" },
+      {
+        protocol: "https",
+        hostname: "d2e2ap87lbbw61.cloudfront.net",
+        pathname: "/products/**",
+      },
+      {
+        protocol: "https",
+        hostname: "team3-snack-s3.s3.ap-northeast-2.amazonaws.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "example.com",
+        pathname: "/**",
+      },
     ],
   },
 };
