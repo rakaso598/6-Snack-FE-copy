@@ -39,6 +39,10 @@ export default function LoginPage() {
   } = useForm<TLoginFormData>({
     resolver: zodResolver(loginSchema),
     mode: "onChange",
+    defaultValues: {
+      email: "test1234@test.com",
+      password: "test1234!",
+    },
   });
 
   // label 렌더링
